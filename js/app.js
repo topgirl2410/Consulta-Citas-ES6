@@ -22,8 +22,6 @@ class Citas {
 
     agregarCita(cita) {
         this.citas = [...this.citas, cita];
-
-        console.log(this.citas);
     }
 }
 
@@ -53,8 +51,21 @@ class UI {
         }, 3000);
     }
 
-    imprimirCitas(citas) {
-        console.log(citas)
+    imprimirCitas({ citas }) {
+
+        citas.forEach(cita => {
+            const { mascota, propietario, telefono, fecha, hora, sintomas, id } = cita;
+
+            const divCita = document.createElement('div');
+            divCita.classList.add('cita', 'p-3');
+            divCita.dataset.id = id;
+
+            // Scripting de los elementos de la cita
+            const mascotaParrafo = document.createElement('h2');
+            mascotaParrafo.classList.add('card-title', 'font-weight-bolder');
+
+        });
+
     }
 }
 
@@ -134,10 +145,10 @@ function nuevaCita(e) {
 // Reiniciar el objeto 
 function reiniciarObj() {
     citaObj.mascota = '',
-    citaObj.propietario = '',
-    citaObj.telefono = '',
-    citaObj.fecha = '',
-    citaObj.hora = '',
-    citaObj.sintomas = ''
+        citaObj.propietario = '',
+        citaObj.telefono = '',
+        citaObj.fecha = '',
+        citaObj.hora = '',
+        citaObj.sintomas = ''
 }
 
