@@ -53,19 +53,76 @@ class UI {
 
     imprimirCitas({ citas }) {
 
+        this.limpiarHTML();
+
         citas.forEach(cita => {
             const { mascota, propietario, telefono, fecha, hora, sintomas, id } = cita;
 
+            // Cita
             const divCita = document.createElement('div');
             divCita.classList.add('cita', 'p-3');
             divCita.dataset.id = id;
 
+
+            // Propietario
+            const propietarioParrafo = document.createElement('p');
+            propietarioParrafo.innerHTML = `
+                <span class="font-weight-bolder">Propietario: </span> ${propietario};
+            `;
+
+
+            // Telefono
+            const telefonoParrafo = document.createElement('p');
+            telefonoParrafo.innerHTML = `
+                <span class="font-weight-bolder">Telefono: </span> ${telefono};
+            `;
+
+
+            // Fecha
+            const fechaParrafo = document.createElement('p');
+            fechaParrafo.innerHTML = `
+            <span class="font-weight-bolder">Fecha: </span> ${fecha};
+            `;
+
+
+            // Hora
+            const horaParrafo = document.createElement('p');
+            horaParrafo.innerHTML = `
+            <span class="font-weight-bolder">Hora: </span> ${hora};
+            `;
+
+
+            // Sintomas
+            const sintomasParrafo = document.createElement('p');
+            sintomasParrafo.innerHTML = `
+            <span class="font-weight-bolder">Síntomas: </span> ${sintomas};
+            `
+
+
             // Scripting de los elementos de la cita
             const mascotaParrafo = document.createElement('h2');
             mascotaParrafo.classList.add('card-title', 'font-weight-bolder');
+            mascotaParrafo.textContent = mascota;
 
+
+            // Agregar los parrafos al divCita
+            divCita.appendChild(mascotaParrafo);
+            divCita.appendChild(propietarioParrafo);
+            divCita.appendChild(telefonoParrafo);
+            divCita.appendChild(fechaParrafo);
+            divCita.appendChild(horaParrafo);
+            divCita.appendChild(sintomasParrafo);
+
+            // Agregar las citas al HTML
+            contenedorCitas.appendChild(divCita);
         });
 
+    }
+
+    limpiarHTML() {
+        while (contenedorCitas.firstChild) {
+            contenedorCitas.removeChild(contenedorCitas.firstChild)
+        }
     }
 }
 
