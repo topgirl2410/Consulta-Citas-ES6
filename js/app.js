@@ -23,6 +23,10 @@ class Citas {
     agregarCita(cita) {
         this.citas = [...this.citas, cita];
     }
+
+    elimimarCita(id) {
+        this.citas = this.citas.filter(cita => cita.id !== id);
+    }
 }
 
 class UI {
@@ -211,5 +215,12 @@ function reiniciarObj() {
 }
 
 function elimimarCita(id) {
-    console.log(id);
+    // Eliminar la  cita
+    administrarCitas.elimimarCita(id);
+
+    // Mostrar un mensaje
+    ui.imprimirAlerta('La cita se elimino correctamente')
+
+    // Actualizar las citas 
+    ui.imprimirCitas(administrarCitas);
 }
