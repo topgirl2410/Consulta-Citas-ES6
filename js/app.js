@@ -222,9 +222,6 @@ function nuevaCita(e) {
         ui.imprimirAlerta('La cita se agrego correctamente');
     }
 
-
-
-
     // Reiniciar el objeto para la validación
     reiniciarObj();
 
