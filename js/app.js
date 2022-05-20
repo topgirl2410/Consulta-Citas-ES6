@@ -63,13 +63,11 @@ class UI {
             divCita.classList.add('cita', 'p-3');
             divCita.dataset.id = id;
 
-
             // Propietario
             const propietarioParrafo = document.createElement('p');
             propietarioParrafo.innerHTML = `
                 <span class="font-weight-bolder">Propietario: </span> ${propietario};
             `;
-
 
             // Telefono
             const telefonoParrafo = document.createElement('p');
@@ -77,13 +75,11 @@ class UI {
                 <span class="font-weight-bolder">Telefono: </span> ${telefono};
             `;
 
-
             // Fecha
             const fechaParrafo = document.createElement('p');
             fechaParrafo.innerHTML = `
             <span class="font-weight-bolder">Fecha: </span> ${fecha};
             `;
-
 
             // Hora
             const horaParrafo = document.createElement('p');
@@ -91,18 +87,22 @@ class UI {
             <span class="font-weight-bolder">Hora: </span> ${hora};
             `;
 
-
             // Sintomas
             const sintomasParrafo = document.createElement('p');
             sintomasParrafo.innerHTML = `
             <span class="font-weight-bolder">Síntomas: </span> ${sintomas};
-            `
-
+            `;
 
             // Scripting de los elementos de la cita
             const mascotaParrafo = document.createElement('h2');
             mascotaParrafo.classList.add('card-title', 'font-weight-bolder');
             mascotaParrafo.textContent = mascota;
+
+            // Boton para eliminar la cita
+            const btnEliminar = document.createElement('button');
+            btnEliminar.classList.add('btn', 'btn-danger', 'mr-2');
+            btnEliminar.innerHTML = 'Eliminar <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            btnEliminar.onclick = () => elimimarCita(id);
 
 
             // Agregar los parrafos al divCita
@@ -112,6 +112,7 @@ class UI {
             divCita.appendChild(fechaParrafo);
             divCita.appendChild(horaParrafo);
             divCita.appendChild(sintomasParrafo);
+            divCita.appendChild(btnEliminar);
 
             // Agregar las citas al HTML
             contenedorCitas.appendChild(divCita);
@@ -209,3 +210,6 @@ function reiniciarObj() {
         citaObj.sintomas = ''
 }
 
+function elimimarCita(id) {
+    console.log(id);
+}
