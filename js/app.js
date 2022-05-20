@@ -102,11 +102,17 @@ class UI {
             mascotaParrafo.classList.add('card-title', 'font-weight-bolder');
             mascotaParrafo.textContent = mascota;
 
-            // Boton para eliminar la cita
+            // Boton para eliminar una cita
             const btnEliminar = document.createElement('button');
             btnEliminar.classList.add('btn', 'btn-danger', 'mr-2');
             btnEliminar.innerHTML = 'Eliminar <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
             btnEliminar.onclick = () => elimimarCita(id);
+
+            // Boton para editar una cita
+            const btnEditar = document.createElement('button');
+            btnEditar.classList.add('btn', 'btn-info');
+            btnEditar.innerHTML = 'Editar <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/></svg>'
+            btnEditar.onclick = () => cargarEdicion(cita);
 
 
             // Agregar los parrafos al divCita
@@ -117,6 +123,7 @@ class UI {
             divCita.appendChild(horaParrafo);
             divCita.appendChild(sintomasParrafo);
             divCita.appendChild(btnEliminar);
+            divCita.appendChild(btnEditar);
 
             // Agregar las citas al HTML
             contenedorCitas.appendChild(divCita);
@@ -224,3 +231,4 @@ function elimimarCita(id) {
     // Actualizar las citas 
     ui.imprimirCitas(administrarCitas);
 }
+
